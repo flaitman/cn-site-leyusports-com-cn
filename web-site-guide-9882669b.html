@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星空气象 · 信息索引页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f7f5f0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2c3e50;
+      line-height: 1.7;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page {
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 0 60px;
+    }
+
+    /* 顶部导航 */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0 12px;
+      border-bottom: 1px solid #e2dcd0;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1f2a36;
+    }
+    .nav-brand span {
+      background: #d9d2c4;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .nav-list {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.95rem;
+    }
+    .nav-list a {
+      color: #4d5a66;
+      text-decoration: none;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s, color 0.2s;
+    }
+    .nav-list a:hover {
+      color: #1f2a36;
+      border-bottom-color: #b0a590;
+    }
+
+    /* hero / 引言 */
+    .intro-block {
+      margin: 48px 0 40px;
+      padding: 12px 0 0;
+    }
+    .intro-block h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+      color: #1e2a33;
+      margin-bottom: 16px;
+    }
+    .intro-block p {
+      font-size: 1.05rem;
+      max-width: 740px;
+      color: #3f4a55;
+      margin-bottom: 28px;
+    }
+    .intro-highlight {
+      background: #ede9e1;
+      padding: 20px 28px;
+      border-radius: 12px;
+      border-left: 6px solid #b8a994;
+      margin: 20px 0 32px;
+      font-size: 0.98rem;
+      color: #2a3540;
+    }
+    .intro-highlight strong {
+      font-weight: 500;
+      color: #1f2a33;
+    }
+
+    /* 场景模块 三列卡片 */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 50px 0 24px;
+      letter-spacing: 0.3px;
+      color: #2b3a44;
+      border-left: 4px solid #c5b9a8;
+      padding-left: 18px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: #fffffffa;
+      border-radius: 18px;
+      padding: 28px 22px 32px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      border: 1px solid #ece7de;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+    .card h3 {
+      font-weight: 450;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+      color: #1f2e39;
+      letter-spacing: 0.2px;
+    }
+    .card p {
+      font-size: 0.96rem;
+      color: #3d4a56;
+      margin-bottom: 10px;
+    }
+    .card .tag {
+      display: inline-block;
+      background: #efebe3;
+      padding: 2px 14px;
+      border-radius: 24px;
+      font-size: 0.78rem;
+      color: #3f4e5a;
+      margin-top: 6px;
+    }
+
+    /* 引用块 / 提示框 */
+    .note-box {
+      background: #f0ede6;
+      padding: 24px 32px;
+      border-radius: 20px;
+      margin: 48px 0 32px;
+      border: 1px solid #dcd5c8;
+      position: relative;
+    }
+    .note-box::before {
+      content: "📋";
+      font-size: 1.6rem;
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      background: #f7f5f0;
+      padding: 0 8px;
+    }
+    .note-box p {
+      margin: 10px 0;
+      font-size: 0.96rem;
+    }
+    .note-box strong {
+      color: #1f2c36;
+    }
+
+    /* faq摘要 */
+    .faq-mini {
+      margin: 40px 0 44px;
+    }
+    .faq-item {
+      padding: 18px 0 12px;
+      border-bottom: 1px solid #e3ddd2;
+    }
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 500;
+      font-size: 1.02rem;
+      display: block;
+      margin-bottom: 6px;
+      color: #1f303b;
+    }
+    .faq-a {
+      font-size: 0.93rem;
+      color: #475663;
+      margin-left: 6px;
+    }
+
+    /* 内嵌链接 */
+    a.star-link {
+      color: #3a5f6b;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px dashed #b2aca0;
+      transition: color 0.15s, border 0.15s;
+    }
+    a.star-link:hover {
+      color: #1d3843;
+      border-bottom: 1px solid #4b6a78;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      border-top: 1px solid #e0d9ce;
+      margin-top: 50px;
+      padding: 28px 0 10px;
+      font-size: 0.85rem;
+      color: #697884;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .nav-list {
+        flex-wrap: wrap;
+        gap: 14px 22px;
+      }
+      .intro-block h1 {
+        font-size: 1.8rem;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .note-box {
+        padding: 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 导航 -->
+  <header class="nav">
+    <div class="nav-brand">
+      <span>⋆</span> 星空笔记
+    </div>
+    <ul class="nav-list">
+      <li><a href="#">概览</a></li>
+      <li><a href="#">场景</a></li>
+      <li><a href="#">归档</a></li>
+      <li><a href="#">指引</a></li>
+    </ul>
+  </header>
+
+  <!-- 核心介绍 / hero -->
+  <section class="intro-block">
+    <h1>整理，索引，延展视野</h1>
+    <p>
+      从零散的信息中梳理脉络，把体育、天文、数据与体验串联在一起。这里不生产夸张的口号，只提供经过筛选的参考线索与结构化的内容入口。
+    </p>
+    <div class="intro-highlight">
+      如果你关注体育资讯的整合方式，<a href="https://web-site-xingkong.com" class="star-link">星空体育</a> 是一个持续更新的信息节点。它更像一本可翻阅的素材簿，将不同来源的资料按主题归拢，方便回溯与对比。
+    </div>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <h2 class="section-title">使用场景 · 信息整理的角度</h2>
+  <div class="cards-grid">
+    <div class="card">
+      <h3>📂 赛事资料归档</h3>
+      <p>
+        将过往赛季的数据、阵容变动以及关键场次记录整理成结构化的笔记。适合需要快速查阅历史脉络的爱好者或内容编辑者。
+      </p>
+      <span class="tag">索引 · 回溯</span>
+    </div>
+    <div class="card">
+      <h3>🔭 跨界观察</h3>
+      <p>
+        当体育与天象、地理、文化产生交集时，收集相关评论与科普短文，形成一个轻量化的跨领域参照库。
+      </p>
+      <span class="tag">关联 · 视角</span>
+    </div>
+    <div class="card">
+      <h3>📋 常见议题速览</h3>
+      <p>
+        针对重复出现的问题或误解，预先整理说明卡片。减少重复沟通，让信息传递更加平实、直接。
+      </p>
+      <span class="tag">FAQ · 说明</span>
+    </div>
+  </div>
+
+  <!-- 提示框 常见说明 -->
+  <div class="note-box">
+    <p><strong>关于信息源与索引</strong></p>
+    <p>
+      本站所有内容均基于公开资料进行归纳，不构成任何专业建议或商业推荐。引用时请以原始出处为准。如果你希望进一步了解某个主题的整理结构，<a href="https://web-site-xingkong.com" class="star-link">星空体育</a> 提供了一种索引思路——它不替代官方信息渠道，而是辅助你更快找到感兴趣的方向。
+    </p>
+    <p>
+      同时我们建议：对于具体数据或实时动态，请交叉验证多个来源。索引的价值在于节省初次检索的时间，而非终结所有疑问。
+    </p>
+  </div>
+
+  <!-- FAQ摘要 常见说明 -->
+  <div class="faq-mini">
+    <h2 class="section-title" style="margin-top:0;">常见疑问 · 简答</h2>
+    <div class="faq-item">
+      <span class="faq-q">❓ 为什么叫“星空”与“体育”的组合？</span>
+      <p class="faq-a">并非刻意组合，而是内容涵盖了两条线索：一部分与天文、宇宙相关，另一部分与运动赛事、体能训练有关。整理时按标签分类，方便各自查找。</p>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">❓ 信息多久更新一次？</span>
+      <p class="faq-a">没有固定周期，根据资料收集情况不定期补充。重要赛事前后或天文事件发生时会优先整理相关条目。</p>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">❓ 可以转载或引用这里的归纳内容吗？</span>
+      <p class="faq-a">鼓励合理引用，但请注明出处。所有整理内容均来自公开信息，引用时请自行核对原始资料。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer-note">
+    <span>信息整理 · 索引型页面</span>
+    <span>⋆ 基于公开资料汇编</span>
+  </footer>
+
+</div>
+</body>
+</html>
