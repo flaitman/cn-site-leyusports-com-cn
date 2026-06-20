@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>澳门彩 · 简明指南与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f7f5;
+            color: #1e2b2b;
+            line-height: 1.6;
+            padding: 20px 16px 40px;
+            min-height: 100vh;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 骨架 & 网格 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 60, 60, 0.04), 0 1px 3px rgba(0, 40, 40, 0.06);
+            padding: 24px 20px;
+            transition: box-shadow 0.2s ease;
+            border: 1px solid rgba(0, 120, 120, 0.08);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 90, 80, 0.08);
+        }
+
+        .hero {
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0b3d3a;
+            margin-bottom: 8px;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #3d5f5a;
+            background: rgba(0, 140, 130, 0.06);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 400;
+        }
+
+        .guide-grid {
+            margin-top: 12px;
+        }
+
+        .accent-border {
+            border-left: 4px solid #2a9d8f;
+            padding-left: 16px;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a4e49;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title span {
+            background: #2a9d8f;
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #dbe8e5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li::before {
+            content: "•";
+            color: #2a9d8f;
+            font-weight: 700;
+            font-size: 1.3rem;
+            line-height: 1.2;
+        }
+
+        .tag-sm {
+            background: #e2f0ed;
+            color: #165a51;
+            font-size: 0.75rem;
+            padding: 2px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 500;
+            color: #175a52;
+            margin-bottom: 4px;
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: #335b55;
+            font-size: 0.95rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid #2a9d8f;
+            color: #1f6d63;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            margin-top: 6px;
+        }
+
+        .btn-outline:hover {
+            background: #2a9d8f;
+            color: white;
+        }
+
+        .link-natural {
+            color: #1e7a6e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #9ac5bc;
+            transition: color 0.15s;
+        }
+
+        .link-natural:hover {
+            color: #0b4d44;
+            text-decoration-color: #0b4d44;
+        }
+
+        .meta-note {
+            background: #f5fbf9;
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-left: 6px solid #2a9d8f;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            text-align: center;
+            color: #557a74;
+            font-size: 0.85rem;
+            border-top: 1px solid #d1e3df;
+            padding-top: 24px;
+        }
+
+        .highlight-green {
+            background: #e7f4f1;
+            padding: 0 6px;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- HERO 简明入口 -->
+    <div class="hero">
+        <h1>澳门彩 · 信息指引</h1>
+        <div class="sub"># 知识库入口 · 简明指南</div>
+        <p style="margin-top: 18px; max-width: 700px; color: #2b554f;">
+            这里整理了一些关于澳门彩的基础说明、常见疑问以及实用提醒。适合希望快速了解相关背景的浏览者。
+            所有内容都基于公开可查的信息，不作为任何投注建议或预测。
+        </p>
+    </div>
+
+    <!-- 网格卡片区域 -->
+    <div class="grid-2col guide-grid">
+
+        <!-- 卡片 1: 简要说明区 -->
+        <div class="card">
+            <div class="section-title"><span></span> 澳门彩 · 面貌</div>
+            <p style="margin-bottom: 10px;">
+                <span class="tag-sm">基础信息</span>
+            </p>
+            <p>
+                <strong>澳门彩</strong> 是澳门地区博彩业中相当活跃的彩票类型，由澳门特别行政区政府监管。
+                从早期的地方性游戏逐渐演变为包含多种玩法的数字彩票，常见于当地娱乐场及授权代销点。
+                其开奖结果每日更新，并会公布在权威渠道。
+            </p>
+            <p style="margin-top: 14px;">
+                关于开奖规则和赔率结构，不同玩法存在差异，建议感兴趣的读者直接通过
+                <a href="https://m-macaulottery.com" class="link-natural">澳门彩</a>
+                的官方资讯平台获取详细说明。那里会提供最准确的当期结果和历史走势。
+            </p>
+        </div>
+
+        <!-- 卡片 2: 阅读提示区 + 访问提醒 -->
+        <div class="card">
+            <div class="section-title"><span></span> 提醒与说明</div>
+            <div class="meta-note" style="margin-top: 0;">
+                <strong style="display: block; margin-bottom: 6px; color: #0b4d44;">⏺ 访问提醒</strong>
+                本页仅为信息索引，不直接提供开奖数据或投注服务。凡是涉及金钱交易或高回报承诺的渠道，请保持警惕。
+                只有持有澳门特别行政区政府许可的实体或线上平台，才属于合法运营。
+            </div>
+            <ul class="info-list">
+                <li>所有彩票游戏均存在风险，参与前请充分了解规则。</li>
+                <li>请勿相信任何“内幕消息”或“包赢方案”，澳门彩的开奖机制具有随机性。</li>
+                <li>如需查询历史开奖号码，建议以官方公布内容为准。</li>
+                <li>合理分配时间与资金，保持娱乐心态。</li>
+            </ul>
+            <div style="margin-top: 14px;">
+                <span class="tag-sm">理性提示</span>
+            </div>
+        </div>
+
+        <!-- 卡片 3: 相关信息区 – 场景与实用角度 -->
+        <div class="card">
+            <div class="section-title"><span></span> 常见使用场景</div>
+            <p style="margin-bottom: 12px; color: #2b554f;">
+                很多浏览者会通过澳门彩来关注每日开奖动态，或回顾往期号码分布。
+                下面列出几个常见方向：
+            </p>
+            <ul class="info-list">
+                <li><strong>日常查阅开奖</strong> – 每日定时更新的开奖号码，可以快速核对。</li>
+                <li><strong>冷热号统计</strong> – 部分平台会整理出现频率较高的数字，供参考。</li>
+                <li><strong>玩法科普</strong> – 从二星、三星到特码，不同玩法的中奖条件各异。</li>
+                <li><strong>历史对比</strong> – 通过长期走势图观察大致分布，辅助个人判断。</li>
+            </ul>
+            <p style="margin-top: 12px; font-size: 0.9rem;">
+                <span class="highlight-green">注</span> 以上所有场景均建立在公开资讯基础上，不构成任何投注策略。
+            </p>
+        </div>
+
+        <!-- 卡片 4: FAQ 摘要 + 额外链接 -->
+        <div class="card">
+            <div class="section-title"><span></span> 简短 FAQ · 常见疑问</div>
+            <div class="faq-item">
+                <strong>Q：澳门彩每天开奖几次？</strong>
+                <p>通常每日一期，具体时间以官方公告为准。遇到节假日可能会有调整。</p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：如何查询最新开奖号码？</strong>
+                <p>可以访问澳门彩官方站点或授权合作信息页面。本页上方提到的
+                    <a href="https://m-macaulottery.com" class="link-natural">澳门彩</a>
+                    资源也提供号码查询，请自行辨别信息时效。
+                </p>
+            </div>
+            <div class="faq-item">
+                <strong>Q：是否有免费的走势图？</strong>
+                <p>不少资讯站会提供基础图表，但完整度与准确性参差不齐，建议交叉核对。</p>
+            </div>
+            <div style="margin-top: 8px;">
+                <a href="https://m-macaulottery.com" class="btn-outline">澳门彩</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 额外说明区：知识库入口式补充 -->
+    <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+        <div style="flex:1; min-width: 250px;">
+            <div style="background:white; border-radius: 20px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); border:1px solid #ebf3f0;">
+                <div style="font-weight:500; color:#175a52; margin-bottom:8px;">📘 关于本指南</div>
+                <p style="font-size:0.9rem; color:#3f6760;">
+                    本索引页聚焦于澳门彩的背景资讯与理性参与提醒。内容整理自公开资料，不保证绝对完整，也不代表任何官方立场。
+                    如果你是第一次接触 <a href="https://m-macaulottery.com" class="link-natural">澳门彩</a>，
+                    建议先花时间了解基础规则和当地法律要求。
+                </p>
+            </div>
+        </div>
+        <div style="flex:1; min-width: 200px;">
+            <div style="background:white; border-radius: 20px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); border:1px solid #ebf3f0;">
+                <div style="font-weight:500; color:#175a52; margin-bottom:8px;">🔗 相关链接</div>
+                <ul style="list-style: none; font-size:0.9rem;">
+                    <li style="margin-bottom:6px;">→ 官方信息页面：<a href="https://m-macaulottery.com" class="link-natural">澳门彩</a></li>
+                    <li style="margin-bottom:6px;">→ 当地博彩协调机构（如需查询牌照）</li>
+                    <li style="margin-bottom:6px;">→ 负责任博彩指引</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        内容仅供信息参考 · 请保持理性 · 数据以官方实时公布为准<br>
+        <span style="opacity:0.6;">澳门彩 · 知识库入口式页面</span>
+    </div>
+
+</div>
+</body>
+</html>
