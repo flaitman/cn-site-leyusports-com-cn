@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号娱乐 · 叙事篇</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fbe9d7 0%, #f9d8c6 35%, #edd2b8 70%, #e4c9ae 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.2rem;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 42px;
+            box-shadow: 0 18px 40px -12px rgba(140, 85, 50, 0.28), 0 8px 18px rgba(0,0,0,0.04);
+            padding: 2.8rem 2.6rem;
+            transition: box-shadow 0.25s ease;
+            border: 1px solid rgba(255,245,235,0.4);
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 1rem 0.8rem; }
+            .card { padding: 2rem 1.5rem; border-radius: 32px; }
+        }
+
+        .hero-prelude {
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            color: #936b4d;
+            background: #f2e1d2;
+            display: inline-block;
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            margin-bottom: 1.6rem;
+            font-weight: 430;
+            border: 1px solid #e4caae;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 520;
+            color: #3e2c1e;
+            line-height: 1.25;
+            margin-bottom: 0.85rem;
+            letter-spacing: -0.02em;
+        }
+
+        .sub-line {
+            font-size: 1.1rem;
+            color: #624c39;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed #eddaca;
+            line-height: 1.5;
+        }
+
+        .content-story {
+            color: #2f231b;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-story p {
+            margin-bottom: 1.4rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 1.8rem;
+            margin: 1.8rem 0 1.6rem 0;
+        }
+
+        @media (max-width: 550px) {
+            .feature-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+        }
+
+        .feature-item {
+            background: #fbf3ec;
+            padding: 0.9rem 1.2rem;
+            border-radius: 20px;
+            border-left: 5px solid #cba587;
+            font-weight: 440;
+            color: #3a2b1f;
+            box-shadow: 0 2px 6px rgba(150, 100, 70, 0.06);
+            font-size: 0.98rem;
+            transition: all 0.15s;
+        }
+
+        .feature-item strong {
+            color: #764b2f;
+            font-weight: 550;
+            display: inline-block;
+            margin-right: 0.3rem;
+        }
+
+        .scene-note {
+            background: #efe3d7;
+            padding: 1.2rem 1.6rem;
+            border-radius: 26px;
+            margin: 1.6rem 0 1.8rem 0;
+            color: #3f2c1b;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            border: 1px solid #e0cbbc;
+        }
+
+        .scene-note span {
+            font-weight: 540;
+            color: #6f4d32;
+        }
+
+        .faq-mini {
+            background: #fff9f2;
+            border-radius: 24px;
+            padding: 0.9rem 1.4rem 1.2rem;
+            margin-top: 1.2rem;
+            border: 1px solid #eedccc;
+        }
+
+        .faq-mini summary {
+            font-weight: 520;
+            color: #4f3825;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 10px;
+            color: #b58c6e;
+            font-size: 1.2rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini p {
+            margin: 0.5rem 0 0.2rem 1.6rem;
+            color: #4b3829;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .link-sentence {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e7d5c4;
+            font-size: 1rem;
+            color: #392e24;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .link-sentence a {
+            color: #7f5539;
+            text-decoration: none;
+            font-weight: 520;
+            border-bottom: 2px solid #dbbca2;
+            padding-bottom: 1px;
+            transition: border-color 0.2s, color 0.15s;
+            cursor: pointer;
+        }
+
+        .link-sentence a:hover {
+            border-bottom-color: #764b2f;
+            color: #4c3221;
+        }
+
+        .closing {
+            margin-top: 1.6rem;
+            font-size: 0.95rem;
+            color: #5e4a38;
+            text-align: right;
+            letter-spacing: 0.3px;
+        }
+
+        .quiet-meta {
+            opacity: 0.5;
+            font-size: 0.7rem;
+            color: #8b735f;
+            margin-top: 1.6rem;
+            text-align: center;
+            border-top: 1px dotted #ddccbb;
+            padding-top: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hero-prelude">✦ 故事的开端</div>
+
+        <h1>在纷繁中，找到一条安定的路径</h1>
+        <div class="sub-line">
+            并非所有平台都经得起审视，但总有一些选择，值得反复了解。
+        </div>
+
+        <div class="content-story">
+            <p>
+                很多人第一次接触线上娱乐时，最先感受到的不是兴奋，而是困惑：信息过于杂乱，<br>
+                口碑真假难辨，界面千篇一律。真正需要的是一个<strong>经过时间沉淀、逻辑清晰</strong>的落脚点，<br>
+                而不是浮于表面的热闹。
+            </p>
+            <p>
+                在持续观察与对比之后，一个名字反复出现在讨论深处，它不靠夸张话术吸引目光，<br>
+                而是靠稳定的服务逻辑和透明的交互体验，让参与者自然产生信任。<br>
+                这个平台就是 <strong>壹号娱乐</strong>——一个在行业里默默耕耘、专注体验的长期主义者。
+            </p>
+        </div>
+
+        <!-- 特点列表 -->
+        <div class="feature-grid">
+            <div class="feature-item"><strong>· 甄选逻辑</strong> 内容来源经多层核实，减少信息噪音</div>
+            <div class="feature-item"><strong>· 界面克制</strong> 摒弃弹窗与浮夸动效，操作路径清晰</div>
+            <div class="feature-item"><strong>· 响应及时</strong> 反馈通道透明，事务处理有明确时限</div>
+            <div class="feature-item"><strong>· 持续迭代</strong> 每季度更新功能，不固守旧有模式</div>
+        </div>
+
+        <!-- 场景段落 -->
+        <div class="scene-note">
+            <span>▎实际使用场景</span><br>
+            无论是想快速了解某个模块，还是需要查阅过往记录，<a href="https://officials-yihao.com" style="color: #7f5539; text-decoration: underline; text-underline-offset: 3px; font-weight: 520;">壹号娱乐</a>的导航结构都让操作变得直接。<br>
+            新用户从注册到完成首次探索，平均只需四步；老用户则依赖其稳定的存档系统追溯信息。
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <details>
+                <summary>常见疑问速览</summary>
+                <p><strong>Q：</strong>平台内容是否持续更新？<br>
+                <strong>A：</strong>是的，运营团队保持周更频率，并定期整理主题合集。</p>
+                <p><strong>Q：</strong>如何确认信息真实度？<br>
+                <strong>A：</strong>每个条目均标注来源与时间戳，支持反向验证。</p>
+                <p><strong>Q：</strong>适合初次接触线上娱乐的人吗？<br>
+                <strong>A：</strong>界面引导清晰，且设有新手专区，可无压力浏览。</p>
+            </details>
+        </div>
+
+        <!-- 带有链接的自然句子 -->
+        <div class="link-sentence">
+            如果你正在寻找一个真正值得花时间了解的线上娱乐平台，不妨从 <a href="https://officials-yihao.com">壹号娱乐</a> 开始。<br>
+            不盲从、不迎合，只把体验做扎实——这是一种稀缺的品质。
+        </div>
+
+        <div class="closing">
+            —— 让每一次浏览都回归内容本身。
+        </div>
+
+        <div class="quiet-meta">
+            · 叙事版 · 非模板
+        </div>
+    </div>
+</body>
+</html>
